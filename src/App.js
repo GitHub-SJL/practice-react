@@ -1,29 +1,11 @@
 
-import { useState } from 'react';
 import './App.css';
+import Like from './Like';
 
 function App() {
   function Header({ title }) {
     return <h1>{title}</h1>
   }
-
-  function Link() {
-    let countState = useState(1000);
-    let count = countState[0];
-    let setCount = countState[1];
-
-    const clickHandler = () => {
-      return setCount((count) => count + 1)
-    }
-
-
-    return <div>
-      <button onClick={clickHandler}>{count}</button>
-    </div>
-  }
-
-
-
   function Nav({ data }) {
     const topicList = [];
     // 배열을 받아서 반복문으로 풀고 
@@ -52,7 +34,7 @@ function App() {
       <Header title="React basic"></Header>
       <Nav data={topics}></Nav>
       <Article title="Welcome" body="Hello, React"></Article>
-      <Link></Link>
+      <Like></Like>
     </div>
   );
 }
