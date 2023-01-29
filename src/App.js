@@ -112,17 +112,43 @@ function App() {
     setId(id);
   }
 
-
+  // 삭제는 링크로 하면 안됨
+  // 버튼을 이용하고, fetch를 이용해 삭제해보자
+  // filter는 불변하기때문에 복제할 필요가 없음
   return (
     <div className="App">
       <Header title="React basic" onChangeMode={changeModeHeaderHandler}></Header>
       <Nav data={topics} onChangeMode={changeModeNavHandler}></Nav>
       {content}
       <Like></Like>
-      <a href='/create' onClick={(e) => {
-        e.preventDefault();
-        setMode("CREATE");
-      }}>Create</a>
+      <ul>
+        <li><a href='/create' onClick={(e) => {
+          e.preventDefault();
+          setMode("CREATE");
+        }}>Create</a></li>
+        <li><button onClick={async () => {
+
+          const options = {
+            method: "DELETE",
+            headers: { "Content-Type": "application/json" },
+          };
+          const type = await fetch("/topics/" + id, options);
+          const topic = await type.json();
+          const newTopics = topics.filter(item => {
+            if (item.id === id) {
+              return false;
+            } else {
+              return true;
+            }
+          });
+          setTopics(newTopics);
+          setMode('WELCOME');
+
+        }}>delete</button>
+        </li>
+      </ul>
+
+
     </div>
   );
 }

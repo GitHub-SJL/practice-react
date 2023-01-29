@@ -53,13 +53,18 @@
 * 해결 하기 위해 데이터를 불변하게 유지
     * 불변함은 원본을 복제해서 복제본을 바꾼다, 그러면 원본은 안바뀜
 ![image](https://user-images.githubusercontent.com/116176170/215325708-2f38b6c8-49e3-4e12-8378-33737280eb17.png)
-* 값이 원시타입은 무조건 불변
+
+* 값이 원시타입은 무조건 불변  
 ![image](https://user-images.githubusercontent.com/116176170/215325773-5b418400-6cea-4e5f-b22a-f7eb5dae65c0.png)
-* 컬렉션일때는 바뀐다.
-![image](https://user-images.githubusercontent.com/116176170/215325869-807fdd09-2380-4bb0-8956-91db3868af77.png)
+* 컬렉션일때는 바뀐다.  
+![image](https://user-images.githubusercontent.com/116176170/215325869-807fdd09-2380-4bb0-8956-91db3868af77.png)  
 
 * push vs concat
     * push는 원본데이터를 바꾼다 (가변성)
     * concat은 원본데이터는 유지가 된다 (불변성)
 ![image](https://user-images.githubusercontent.com/116176170/215326057-91b6935d-1193-4ab4-9cbc-f123db21d3cc.png)
+
+
+* 삭제
+![image](https://user-images.githubusercontent.com/116176170/215328043-c9a50729-776e-496c-9438-566f032cecc2.png)
 
