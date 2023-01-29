@@ -26,3 +26,8 @@
 ![image](https://user-images.githubusercontent.com/116176170/215317633-488a4359-b81b-4ea4-ab6a-c0600887f34c.png)
 
 
+## ajax를 이용해서 글목록 가져오기
+* json-server 생성 : Restfull API를 제공하는 서버 생성 라이브러리
+    * npm i -g json-server
+    * json-server --watch db.json --port 9999
+![image](https://user-images.githubusercontent.com/116176170/215319694-cbdeda0d-daa5-4bc8-b0e0-0e0a8f705858.png)
