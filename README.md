@@ -65,6 +65,6 @@
 ![image](https://user-images.githubusercontent.com/116176170/215326057-91b6935d-1193-4ab4-9cbc-f123db21d3cc.png)
 
 
-* 삭제
+## 삭제
 ![image](https://user-images.githubusercontent.com/116176170/215328043-c9a50729-776e-496c-9438-566f032cecc2.png)
 

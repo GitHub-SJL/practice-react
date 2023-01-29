@@ -46,6 +46,20 @@ function Create({ onCreate }) {
   </form>
 }
 
+function Update({ onCreate }) {
+  return <form action="" onSubmit={(e) => {
+    e.preventDefault();
+    const title = e.target.title.value;
+    const body = e.target.body.value;
+    onCreate(title, body);
+  }}>
+    <h1>Update</h1>
+    <p><input type="text" placeholder='title' name="title" /></p>
+    <p><textarea placeholder='body' name='body' ></textarea></p>
+    <p><input type="submit" value="Update" /></p>
+  </form>
+}
+
 
 function App() {
 
@@ -97,7 +111,27 @@ function App() {
           setId(topic.id);
         }}
       ></Create>);
-
+  } else if (mode === "UPDATE"){
+    content = (
+      <Update
+        onCreate={async (title, body) => {
+          const options = {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ title, body }),
+          };
+          const type = await fetch("/topics", options);
+          // topics에 새로운 form에 입력한 값으로 만든 topic을 추가
+          // 불변성때문에 기존 배열들을 다시 불러와서 새롭게 추가해야한다.
+          // 즉, 리액트는 값이 달라져야 리랜더링을 하는데 그냥 setTopics로 값을 바꾸면 리액트는 값이 바뀐줄 모른다.
+          const topic = await type.json();
+          const newTopics = [...topics];
+          newTopics.push(topic);
+          setTopics(newTopics);
+          setMode('READ');
+          setId(topic.id);
+        }}
+      ></Update>);
   }
   ///////////////////////////////////////////////////////////////
 
@@ -126,6 +160,14 @@ function App() {
           e.preventDefault();
           setMode("CREATE");
         }}>Create</a></li>
+        <li>
+          <a href='/update' onClick={e => {
+            e.preventDefault();
+            setMode("UPDATE");
+          }}>Update</a>
+        </li>
+
+
         <li><button onClick={async () => {
 
           const options = {
