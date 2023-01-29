@@ -68,3 +68,8 @@
 ## 삭제
 ![image](https://user-images.githubusercontent.com/116176170/215328043-c9a50729-776e-496c-9438-566f032cecc2.png)
 
+## 업데이트
+![image](https://user-images.githubusercontent.com/116176170/215329672-97058ab6-1175-4066-983b-0aadaa328e61.png)  
+![image](https://user-images.githubusercontent.com/116176170/215329740-1bf056ef-abc7-47b9-9f5d-1f734e02a05a.png)  
+![image](https://user-images.githubusercontent.com/116176170/215329770-55b4f697-2b74-4471-95c9-9f1323c90738.png)  
+* 생성에 읽기를 합친 느낌

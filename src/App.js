@@ -46,16 +46,25 @@ function Create({ onCreate }) {
   </form>
 }
 
-function Update({ onCreate }) {
+// title, body를 props로 받았다고해도 값을 바꿀수없다 
+// 그래서 useState를 사용하지않으면 input 박스에서도 타이핑이 되지않는다.
+// 그리고.. onChange로 타이핑을 입력받아 state를 변경해야 그제서야 입력이 된다.
+function Update({ onUpdate, title,body }) {
+  const [_title, setTitle] = useState(title);
+  const [_body, setBody] = useState(body);
   return <form action="" onSubmit={(e) => {
     e.preventDefault();
     const title = e.target.title.value;
     const body = e.target.body.value;
-    onCreate(title, body);
+    onUpdate(title, body);
   }}>
     <h1>Update</h1>
-    <p><input type="text" placeholder='title' name="title" /></p>
-    <p><textarea placeholder='body' name='body' ></textarea></p>
+    <p><input type="text" placeholder='title' name="title" value={_title} onChange={(e)=>{
+      setTitle(e.target.value)
+    }} /></p>
+    <p><textarea placeholder='body' name='body' value={_body} onChange={(e)=>{
+      setBody(e.target.value)
+    }} ></textarea></p>
     <p><input type="submit" value="Update" /></p>
   </form>
 }
@@ -111,22 +120,32 @@ function App() {
           setId(topic.id);
         }}
       ></Create>);
-  } else if (mode === "UPDATE"){
+  } else if (mode === "UPDATE") {
+    // 업데이트는 생성에 읽기를 추가한 거라 생각하면 됨
+    // 그래서 form에서 데이터를 불러와야됨
+    const topic = topics.find((item) => item.id === id);
     content = (
+      // title과 body를 받고 Update 컴포넌트에 prop으로 넘김
       <Update
-        onCreate={async (title, body) => {
+        title={topic.title}
+        body={topic.body}
+        onUpdate={async (title, body) => {
           const options = {
-            method: "POST",
+            method: "PATCH",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ title, body }),
           };
-          const type = await fetch("/topics", options);
-          // topics에 새로운 form에 입력한 값으로 만든 topic을 추가
-          // 불변성때문에 기존 배열들을 다시 불러와서 새롭게 추가해야한다.
-          // 즉, 리액트는 값이 달라져야 리랜더링을 하는데 그냥 setTopics로 값을 바꾸면 리액트는 값이 바뀐줄 모른다.
+          const type = await fetch("/topics/"+id , options);
           const topic = await type.json();
-          const newTopics = [...topics];
-          newTopics.push(topic);
+          const newTopics = topics.map(item=>{
+            if(item.id===id){
+              item.title = topic.title;
+              item.body = topic.body;
+              return item;
+            } else {
+              return item;
+            }
+          })
           setTopics(newTopics);
           setMode('READ');
           setId(topic.id);
