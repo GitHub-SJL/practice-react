@@ -39,3 +39,27 @@
 * 물어보는 정보들을 Prompt
 * Prompt를 모델이 처리해서 우리에게 제공
 
+## 생성 구현
+![image](https://user-images.githubusercontent.com/116176170/215323373-a395b367-9728-4e51-a60c-d802cc75f1b0.png)
+![image](https://user-images.githubusercontent.com/116176170/215326996-4d7566cb-dfa3-469b-a5a0-9901a5c51589.png)
+
+## Props 와 state 차이점
+* Props는 컴포넌트라는 제품을 사용하는 사용자의 인터페이스
+* State는 컴포넌트 내부에서 사용하는 인터페이스
+
+## 불변성
+![image](https://user-images.githubusercontent.com/116176170/215325583-e2e08da7-42f6-41c0-af09-d7584df1fec2.png)
+* 코드를 작성하는 의도는 b만 [1,2]가 나오도록 하려고 했음
+* 해결 하기 위해 데이터를 불변하게 유지
+    * 불변함은 원본을 복제해서 복제본을 바꾼다, 그러면 원본은 안바뀜
+![image](https://user-images.githubusercontent.com/116176170/215325708-2f38b6c8-49e3-4e12-8378-33737280eb17.png)
+* 값이 원시타입은 무조건 불변
+![image](https://user-images.githubusercontent.com/116176170/215325773-5b418400-6cea-4e5f-b22a-f7eb5dae65c0.png)
+* 컬렉션일때는 바뀐다.
+![image](https://user-images.githubusercontent.com/116176170/215325869-807fdd09-2380-4bb0-8956-91db3868af77.png)
+
+* push vs concat
+    * push는 원본데이터를 바꾼다 (가변성)
+    * concat은 원본데이터는 유지가 된다 (불변성)
+![image](https://user-images.githubusercontent.com/116176170/215326057-91b6935d-1193-4ab4-9cbc-f123db21d3cc.png)
+
