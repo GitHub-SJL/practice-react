@@ -2,6 +2,7 @@
 import { useState, useEffect } from 'react';
 import './App.css';
 import Like from './Like';
+import { Article } from './Article';
 
 function Header({ title, onChangeMode }) {
   function clickHandler(evt) {
@@ -11,12 +12,7 @@ function Header({ title, onChangeMode }) {
   return <h1><a href="/" onClick={clickHandler}>{title}</a></h1>
 }
 
-function Article({ title, body }) {
-  return <>
-    <h2>{title}</h2>
-    {body}
-  </>
-}
+
 
 function Nav({ data, onChangeMode }) {
   const topicList = data.map(item => <li key={item.id}>

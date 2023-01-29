@@ -31,3 +31,11 @@
     * npm i -g json-server
     * json-server --watch db.json --port 9999
 ![image](https://user-images.githubusercontent.com/116176170/215319694-cbdeda0d-daa5-4bc8-b0e0-0e0a8f705858.png)
+
+## 프록시 서버 설정
+
+## Open AI
+* 학습한 모델들을 제공해주고 직접 다운받는게 아닌 Rest API로 요청을 해서 AI를 처리 
+* 물어보는 정보들을 Prompt
+* Prompt를 모델이 처리해서 우리에게 제공
+
